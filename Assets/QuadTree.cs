@@ -171,4 +171,21 @@ public class QuadTree
             }
         }
     }
+
+    private List<GameObject> Retrieve(List<GameObject> objs,Rect inputRect)
+    {
+        List<int> idx = GetIndexes(inputRect);
+        for (int ii = 0; ii < idx.Count; ii++)
+        {
+            int index = idx[ii];
+            if (index != -1 && nodes[0] != null)
+            {
+                nodes[index].Retrieve(objs, inputRect);
+            }
+
+            objs.AddRange(objects);
+        }
+
+        return objs;
+    }
 }
